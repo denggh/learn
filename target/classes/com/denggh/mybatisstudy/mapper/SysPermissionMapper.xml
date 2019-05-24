@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.denggh.mybatisstudy.dao.SysPermissionMapper" >
+  <resultMap id="BaseResultMap" type="com.denggh.mybatisstudy.entity.SysPermission" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="parent_id" property="parentId" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="component" property="component" jdbcType="VARCHAR" />
+    <result column="component_name" property="componentName" jdbcType="VARCHAR" />
+    <result column="redirect" property="redirect" jdbcType="VARCHAR" />
+    <result column="menu_type" property="menuType" jdbcType="INTEGER" />
+    <result column="perms" property="perms" jdbcType="VARCHAR" />
+    <result column="sort_no" property="sortNo" jdbcType="DOUBLE" />
+    <result column="always_show" property="alwaysShow" jdbcType="BIT" />
+    <result column="icon" property="icon" jdbcType="VARCHAR" />
+    <result column="is_route" property="isRoute" jdbcType="BIT" />
+    <result column="is_leaf" property="isLeaf" jdbcType="BIT" />
+    <result column="hidden" property="hidden" jdbcType="INTEGER" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="del_flag" property="delFlag" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, parent_id, name, url, component, component_name, redirect, menu_type, perms, 
+    sort_no, always_show, icon, is_route, is_leaf, hidden, description, create_by, create_time, 
+    update_by, update_time, del_flag
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_permission
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sys_permission
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.denggh.mybatisstudy.entity.SysPermission" >
+    insert into sys_permission (id, parent_id, name, 
+      url, component, component_name, 
+      redirect, menu_type, perms, 
+      sort_no, always_show, icon, 
+      is_route, is_leaf, hidden, description, 
+      create_by, create_time, update_by, 
+      update_time, del_flag)
+    values (#{id,jdbcType=VARCHAR}, #{parentId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{url,jdbcType=VARCHAR}, #{component,jdbcType=VARCHAR}, #{componentName,jdbcType=VARCHAR}, 
+      #{redirect,jdbcType=VARCHAR}, #{menuType,jdbcType=INTEGER}, #{perms,jdbcType=VARCHAR}, 
+      #{sortNo,jdbcType=DOUBLE}, #{alwaysShow,jdbcType=BIT}, #{icon,jdbcType=VARCHAR}, 
+      #{isRoute,jdbcType=BIT}, #{isLeaf,jdbcType=BIT}, #{hidden,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, 
+      #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{delFlag,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.denggh.mybatisstudy.entity.SysPermission" >
+    insert into sys_permission
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="parentId != null" >
+        parent_id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+      <if test="component != null" >
+        component,
+      </if>
+      <if test="componentName != null" >
+        component_name,
+      </if>
+      <if test="redirect != null" >
+        redirect,
+      </if>
+      <if test="menuType != null" >
+        menu_type,
+      </if>
+      <if test="perms != null" >
+        perms,
+      </if>
+      <if test="sortNo != null" >
+        sort_no,
+      </if>
+      <if test="alwaysShow != null" >
+        always_show,
+      </if>
+      <if test="icon != null" >
+        icon,
+      </if>
+      <if test="isRoute != null" >
+        is_route,
+      </if>
+      <if test="isLeaf != null" >
+        is_leaf,
+      </if>
+      <if test="hidden != null" >
+        hidden,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="createBy != null" >
+        create_by,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateBy != null" >
+        update_by,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="delFlag != null" >
+        del_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="component != null" >
+        #{component,jdbcType=VARCHAR},
+      </if>
+      <if test="componentName != null" >
+        #{componentName,jdbcType=VARCHAR},
+      </if>
+      <if test="redirect != null" >
+        #{redirect,jdbcType=VARCHAR},
+      </if>
+      <if test="menuType != null" >
+        #{menuType,jdbcType=INTEGER},
+      </if>
+      <if test="perms != null" >
+        #{perms,jdbcType=VARCHAR},
+      </if>
+      <if test="sortNo != null" >
+        #{sortNo,jdbcType=DOUBLE},
+      </if>
+      <if test="alwaysShow != null" >
+        #{alwaysShow,jdbcType=BIT},
+      </if>
+      <if test="icon != null" >
+        #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="isRoute != null" >
+        #{isRoute,jdbcType=BIT},
+      </if>
+      <if test="isLeaf != null" >
+        #{isLeaf,jdbcType=BIT},
+      </if>
+      <if test="hidden != null" >
+        #{hidden,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null" >
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delFlag != null" >
+        #{delFlag,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.denggh.mybatisstudy.entity.SysPermission" >
+    update sys_permission
+    <set >
+      <if test="parentId != null" >
+        parent_id = #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="component != null" >
+        component = #{component,jdbcType=VARCHAR},
+      </if>
+      <if test="componentName != null" >
+        component_name = #{componentName,jdbcType=VARCHAR},
+      </if>
+      <if test="redirect != null" >
+        redirect = #{redirect,jdbcType=VARCHAR},
+      </if>
+      <if test="menuType != null" >
+        menu_type = #{menuType,jdbcType=INTEGER},
+      </if>
+      <if test="perms != null" >
+        perms = #{perms,jdbcType=VARCHAR},
+      </if>
+      <if test="sortNo != null" >
+        sort_no = #{sortNo,jdbcType=DOUBLE},
+      </if>
+      <if test="alwaysShow != null" >
+        always_show = #{alwaysShow,jdbcType=BIT},
+      </if>
+      <if test="icon != null" >
+        icon = #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="isRoute != null" >
+        is_route = #{isRoute,jdbcType=BIT},
+      </if>
+      <if test="isLeaf != null" >
+        is_leaf = #{isLeaf,jdbcType=BIT},
+      </if>
+      <if test="hidden != null" >
+        hidden = #{hidden,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null" >
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null" >
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delFlag != null" >
+        del_flag = #{delFlag,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.denggh.mybatisstudy.entity.SysPermission" >
+    update sys_permission
+    set parent_id = #{parentId,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      component = #{component,jdbcType=VARCHAR},
+      component_name = #{componentName,jdbcType=VARCHAR},
+      redirect = #{redirect,jdbcType=VARCHAR},
+      menu_type = #{menuType,jdbcType=INTEGER},
+      perms = #{perms,jdbcType=VARCHAR},
+      sort_no = #{sortNo,jdbcType=DOUBLE},
+      always_show = #{alwaysShow,jdbcType=BIT},
+      icon = #{icon,jdbcType=VARCHAR},
+      is_route = #{isRoute,jdbcType=BIT},
+      is_leaf = #{isLeaf,jdbcType=BIT},
+      hidden = #{hidden,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      del_flag = #{delFlag,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
